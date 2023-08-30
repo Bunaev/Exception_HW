@@ -15,13 +15,13 @@ public class Bank extends Thread {
     }
     public void run() {
         try {
-            toUpAccount();
+            cashIn();
             CashOut();
         } catch (MaxBalanceExceededException | InsufficientFundsException e) {
             System.out.println(e.getMessage());
         }
     }
-    private void toUpAccount() throws MaxBalanceExceededException {
+    private void cashIn() throws MaxBalanceExceededException {
         System.out.print("\n" + "Введите порядковый номер счета и сумму для пополнения.\n"+"Порядковый номер: ");
         int index = scanner.nextInt();
         while (index > bankAccounts.size() || index < 1) {
