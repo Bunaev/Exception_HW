@@ -16,7 +16,7 @@ public class Bank extends Thread {
     public void run() {
         try {
             cashIn();
-            CashOut();
+            cashOut();
         } catch (MaxBalanceExceededException | InsufficientFundsException e) {
             System.out.println(e.getMessage());
         }
@@ -38,7 +38,7 @@ public class Bank extends Thread {
             System.out.println("Счет  №" + bankAccounts.get(index-1).getAccountNumber() + ", принадлежащий: " + bankAccounts.get(index-1).getOwner() + " успешно пополнен.");
         }
     }
-    private void CashOut() throws InsufficientFundsException{
+    private void cashOut() throws InsufficientFundsException{
         System.out.print("\n" + "Введите порядковый номер счета и сумму для снятия.\n"+"Порядковый номер: ");
         int index = scanner.nextInt();
         while (index > bankAccounts.size() || index < 1) {
