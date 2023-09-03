@@ -29,6 +29,8 @@ public class ProductList {
         }
     }
 
+    // Метод для покупки товара. Отслеживает его кол-во. Если оно равно 0 - удаляет позицию из ArrayList.
+    // Если кол-во меньше 0 - выбрасывает исключение OutOfQuantityItemsException.
     public void purchaseProduct(String productName, int quantity) throws OutOfQuantityItemsException {
         for (Product product : productList) {
             if (product.getName().equals(productName)) {

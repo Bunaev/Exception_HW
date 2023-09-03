@@ -16,6 +16,7 @@ public class AllProductsInShop {
         }
         allProducts.get(categoryName.toUpperCase()).addProduct(product);
     }
+
     // Метод для вывода всех позиций на складе магазина.
     // Отрабатывается исключение OutOfStockAllItemsException - если товаров в магазине нет.
     public void allPositionsInShop() throws OutOfStockAllItemsException {
@@ -39,6 +40,7 @@ public class AllProductsInShop {
         }
         System.out.println("Всего товаров в магазине: " + totalQuantity + ", на общую сумму: " + totalPrice + ".\n");
     }
+
     // Метод для добавления нового товара в магазин.
     // Проверяет наличие ключа (категории товара), если таковой отсутствует - запрашивает у пользователя разрешения добавить новую категорию.
     // Отрабатывается исключение IllegalArgumentException - при некорректном ответе на запрос.
@@ -62,6 +64,7 @@ public class AllProductsInShop {
         System.out.println("\n*** Товар успешно добавлен. ***\n");
     }
 
+// Метод для покупки товара. Проверяет наличие товара в магазине, если нет - выбрасывает исключение ProductNotFoundException.
     public void purchaseProduct(String productName, int quantity) throws ProductNotFoundException {
         for (String categoryName : allProducts.keySet()) {
             if (!searchProduct(productName)) {
@@ -81,6 +84,10 @@ public class AllProductsInShop {
             }
         }
     }
+
+    // Приватный метод для поиска товара в магазине. Если находит - возвратит true, если нет - возвратит false.
+    // Используется для метода purchaseProduct и проверки исключения ProductNotFoundException.
+    // Хотел реализовать полноценный поисковик по товарам, но уже не хватает времени.
     private boolean searchProduct(String productName) {
         boolean position = false;
         for (String categoryName : allProducts.keySet()) {
